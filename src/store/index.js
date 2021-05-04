@@ -1,16 +1,17 @@
-import { createStore } from "vuex";
+/* eslint-disable no-undef */
+import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    todos:[]
+    todos: []
   },
   mutations: {
-    SET_TODOS(state, todos){
-state.todos=todos
+    SET_TODOS(state, todos) {
+      state.todos = todos
     }
   },
   actions: {
-    fetchTodos(context){
+    fetchTodos(context) {
       const todos = [
         { id: 1, text: 'Estudar HTML & CSS', done: true },
         { id: 2, text: 'Conceitos Vuex', done: true },
@@ -18,15 +19,15 @@ state.todos=todos
         { id: 4, text: 'Começar com Nuxt', done: false },
         { id: 5, text: 'Back-end com Adonis', done: false }
       ]
-      context.commit('SET_TODOS',todos)
+      context.commit('SET_TODOS', todos)
     }
   },
-  getters:{
-    allTodos(state){
+  getters: {
+    $allTodos(state) {
       return state.todos
     },
-    doneTodos(){
-      return state.todos.filter((todo)=>todo.done)
+    $doneTodos(state) {
+      return state.todos.filter((todo) => todo.done)
     }
   }
-});
+})
